@@ -79,7 +79,7 @@ void atualizarStatus(Fatura* raiz, int numero, const char* novoStatus) {
     }
 }
 
-// Função auxiliar para encontrar o menor nó da árvore
+// Função auxiliar para encontrar o menor nó da árvor
 Fatura* encontrarMinimo(Fatura* raiz) {
     while (raiz->esquerda != NULL) {
         raiz = raiz->esquerda;
@@ -87,7 +87,7 @@ Fatura* encontrarMinimo(Fatura* raiz) {
     return raiz;
 }
 
-// Função para remover uma fatura da árvore
+// Função par remover uma fatura da árvore
 Fatura* removerFatura(Fatura* raiz, int numero) {
     if (raiz == NULL) {
         return NULL;
@@ -97,12 +97,12 @@ Fatura* removerFatura(Fatura* raiz, int numero) {
     } else if (numero > raiz->numero) {
         raiz->direita = removerFatura(raiz->direita, numero);
     } else {
-        // Caso 1: Nó sem filhos
+        //No sem filhos
         if (raiz->esquerda == NULL && raiz->direita == NULL) {
             free(raiz);
             return NULL;
         }
-        // Caso 2: Nó com um filho
+        // Nó com um filho
         if (raiz->esquerda == NULL) {
             Fatura* temp = raiz->direita;
             free(raiz);
@@ -112,7 +112,7 @@ Fatura* removerFatura(Fatura* raiz, int numero) {
             free(raiz);
             return temp;
         }
-        // Caso 3: Nó com dois filhos
+        // No com dois filhos
         Fatura* temp = encontrarMinimo(raiz->direita);
         raiz->numero = temp->numero;
         strcpy(raiz->dataVencimento, temp->dataVencimento);
@@ -241,7 +241,7 @@ int main() {
         if (opcao != 7) {
             printf("\nPressione qualquer tecla para continuar...");
             getchar(); // Aguarda o usuário pressionar uma tecla
-            getchar(); // Para capturar o "Enter" deixado pelo scanf
+            getchar(); // Para capturar o Enter
         }
 
     } while (opcao != 7);
